@@ -1,0 +1,12 @@
+{
+  "name": "bash-history",
+  "version": "0.0.0",
+  "dependencies": {
+    "terminal-kit": "2.5.1"
+  },
+  "pkg": {
+    "assets": [
+      "node_modules/**/*"
+    ]
+  }
+}
