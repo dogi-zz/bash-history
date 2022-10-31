@@ -2,12 +2,9 @@
   "name": "bash-history",
   "version": "0.0.0",
   "scripts": {
-    "test": "clear && npx ts-node src/bash-helper.ts ls && head -n3 ~/.bash-helper.state || echo",
-    "run": "./bash-helper",
-    "build": "npx tsc",
-    "pack:prepare": "cd pack && npm install",
-    "pack": "cd pack && npx pkg -t node14-linux -o ../bash-helper --compress GZip -c package.json bash-helper.js",
-    "deploy": "npm run pack:prepare && npm run build && npm run pack && chmod a+x ./bash-helper"
+    "test": "clear && BASH_HISTORY_DEBUG=true npx ts-node src/bash-history.ts ls && head -n10 ~/.bash-history.state || echo",
+    "run": "bash-history",
+    "pack": "npx tsc && cd pack && npm install"
   },
   "dependencies": {
     "terminal-kit": "2.5.1",
@@ -18,7 +15,6 @@
     "eslint": "^6.8.0",
     "eslint-config-prettier": "6.15.0",
     "eslint-plugin-import": "2.22.1",
-    "pkg": "^5.5.2",
     "ts-lint": "^4.5.1",
     "ts-node": "8.10.2",
     "tsconfig-paths": "3.9.0",

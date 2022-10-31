@@ -1,5 +1,6 @@
 /node_modules/
 /pack/node_modules/
 /pack/*.js
-/bash-helper
+/bash-history
+/bash-history.log
 
