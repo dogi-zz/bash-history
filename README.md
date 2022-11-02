@@ -25,7 +25,7 @@ replacement for the Ctrl-R function in Bash, that allows favorites based on the 
 
 ## Install
 
-After `pack` the script can be installed (copied to /opt/bash-history) width setup.sh
+`setup.sh` runs `pack` installs the script in `/opt/bash-history`
 
 ## Run
 

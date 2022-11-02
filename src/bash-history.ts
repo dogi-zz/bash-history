@@ -293,6 +293,22 @@ const toggleFav = (favArray: string[]) => {
   printSuggestionList();
 };
 
+const activateLine = () => {
+  const inputLine = selectionCursorPosition < 0 ? inputString : suggestions[selectionCursorPosition][0];
+  if (inputLine.length) {
+    const favIndex = bashHelperState.favorites.indexOf(inputLine);
+    const dirFavIndex = bashHelperState.dirCommands[actualCwd]?.indexOf(inputLine);
+    if (favIndex >= 0){
+      bashHelperState.favorites.splice(favIndex, 1);
+      bashHelperState.favorites.unshift(inputLine);
+    }
+    if (dirFavIndex >= 0){
+      bashHelperState.dirCommands[actualCwd].splice(favIndex, 1);
+      bashHelperState.dirCommands[actualCwd].unshift(inputLine);
+    }
+  }
+  return inputLine;
+};
 
 // --- input handling
 
@@ -389,15 +405,7 @@ term.on('key', (name, matches, data) => {
   }
 
 
-  const activateLine = () => {
-    const inputLine = selectionCursorPosition < 0 ? inputString : suggestions[selectionCursorPosition][0];
-    const favIndex = bashHelperState.favorites.indexOf(inputLine);
-    if (inputLine.length && favIndex >= 0) {
-      bashHelperState.favorites.splice(favIndex, 1);
-      bashHelperState.favorites.unshift(inputLine);
-    }
-    return inputLine;
-  };
+
 
   if (name === 'ENTER') {
     const line = activateLine();
