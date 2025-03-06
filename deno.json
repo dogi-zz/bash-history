@@ -1,0 +1,19 @@
+{
+  "tasks": {
+    "dev": "BASH_HISTORY_DEV=true deno run --watch --allow-all src/bash-history.ts",
+    "logs": "tail -f bash-history.log",
+    "build": "mkdir -p build && deno compile --allow-all -o build/bash-history src/bash-history.ts",
+    "install": "./setup.sh",
+    "build-install": "deno task build && deno task install"
+  },
+  "lint": {
+    "rules": {
+      "exclude": ["no-explicit-any"]
+    }
+  },
+  "fmt": {
+    "options": {
+      "lineWidth": 240
+    }
+  }
+}
